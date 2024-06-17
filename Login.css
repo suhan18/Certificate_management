@@ -1,0 +1,91 @@
+/* src/components/Login.css */
+
+/* Body styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #d3d3d3, #800080); /* Light grey and Purple gradient background */
+}
+
+/* Login container */
+.login-container {
+    width: 300px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Cool font */
+}
+
+/* Form header */
+.login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-header img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.login-header h2 {
+    margin: 0;
+    color: #800080; /* Purple text color */
+}
+
+/* Form input fields */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #800080; /* Purple border */
+    border-radius: 5px;
+    background-color: #f0f0f0; /* Light grey background */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #4b0082; /* Darker purple border color on focus */
+    background-color: #ffffff; /* White background on focus */
+}
+
+/* Submit button */
+.login-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #800080; /* Purple background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #4b0082; /* Darker purple background color on hover */
+}
+
+/* Register link */
+.login-container p {
+    margin-top: 10px;
+}
+
+.login-container p a {
+    color: #800080;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-container p a:hover {
+    color: #4b0082;
+}
