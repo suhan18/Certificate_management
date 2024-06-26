@@ -1,0 +1,56 @@
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+dir               = ./demoCA
+certs             = $dir/certs
+crl_dir           = $dir/crl
+new_certs_dir     = $dir/newcerts
+database          = $dir/index.txt
+serial            = $dir/serial
+RANDFILE          = $dir/private/.rand
+
+private_key       = $dir/private/cakey.pem
+certificate       = $dir/cacert.pem
+
+crlnumber         = $dir/crlnumber
+crl               = $dir/crl.pem
+crl_extensions    = crl_ext
+default_crl_days  = 30
+
+default_days      = 365
+default_md        = sha256
+
+policy            = policy_anything
+
+[ policy_anything ]
+countryName             = optional
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = optional
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ req ]
+distinguished_name = req_distinguished_name
+
+[ req_distinguished_name ]
+countryName                     = Country Name (2 letter code)
+countryName_default             = US
+stateOrProvinceName             = State or Province Name (full name)
+stateOrProvinceName_default     = California
+localityName                    = Locality Name (eg, city)
+localityName_default            = San Francisco
+0.organizationName              = Organization Name (eg, company)
+0.organizationName_default      = My Company
+commonName                      = Common Name (e.g. server FQDN or YOUR name)
+commonName_max                  = 64
+
+[ v3_ca ]
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid:always,issuer
+basicConstraints = CA:true
+
+[ crl_ext ]
+authorityKeyIdentifier=keyid:always
