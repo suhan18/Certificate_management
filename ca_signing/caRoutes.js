@@ -294,19 +294,18 @@ const initGridFS = async () => {
     return bucket;
 };
 
-const uploadFileToGridFS = async (bucket, commonName, fileName) => {
-    const filePath = path.join(archiveDir, commonName, fileName);
-    if (!fs.existsSync(filePath)) {
-        throw new Error(`File not found: ${filePath}`);
-    }
-
-    const uploadStream = bucket.openUploadStream(fileName);
+async function uploadFileToGridFS(bucket, filename, filePath) {
+    const uploadStream = bucket.openUploadStream(filename);
     const fileStream = fs.createReadStream(filePath);
 
     return new Promise((resolve, reject) => {
         fileStream.pipe(uploadStream)
-            .on('finish', () => resolve(uploadStream.id))
-            .on('error', (error) => reject(error));
+            .on('error', (error) => {
+                reject(error);
+            })
+            .on('finish', () => {
+                resolve(uploadStream.id);
+            });
     });
 };
 
@@ -443,7 +442,6 @@ router.get('/file/:id', async (req, res) => {
     }
 });
 
-// Route to issue a new certificate using a selected CA
 router.post('/issue', async (req, res) => {
     const { commonName, caId } = req.body;
 
@@ -487,7 +485,8 @@ router.post('/issue', async (req, res) => {
         const certificate = new Certificate({
             commonName,
             certificate: issuedCertFileId,
-            issuedBy: caId
+            issuedBy: caId,
+            ca: caId // Add the ca field here
         });
 
         await certificate.save();
@@ -499,5 +498,6 @@ router.post('/issue', async (req, res) => {
         res.status(500).send('Error issuing certificate');
     }
 });
+
 
 module.exports = router;
