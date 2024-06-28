@@ -1,0 +1,25 @@
+<svg width="1440" height="856" viewBox="0 0 1440 856" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Define the linear gradient -->
+        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#D3D3D3;" /> <!-- Light violet -->
+            <stop offset="100%" style="stop-color:#800080;" /> <!-- Dark violet -->
+        </linearGradient>
+        
+        <!-- Define the wavy mask -->
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="-69" y="-192" width="1682" height="1048">
+            <path d="M-69 814L-6 -1.5L-45 -89.5L1497.5 -192C1570.83 93.6667 1724.2 535.693 1478 433C1203.5 318.5 855.5 351.5 687 621C465.494 975.278 119.667 826.167 -69 814Z" fill="white"/>
+        </mask>
+    </defs>
+    
+    <!-- Apply the background gradient -->
+    <rect width="100%" height="100%" fill="url(#gradient1)" />
+    
+    <!-- Apply the wavy shape with the violet gradient -->
+    <g mask="url(#mask0)">
+        <g clip-path="url(#clip0)" filter="url(#filter0_f)">
+            <rect width="1756.41" height="1249" transform="translate(-118 -97)" fill="url(#gradient1)"/>
+            <!-- Add other paths and elements for the wavy background -->
+        </g>
+    </g>
+</svg>
